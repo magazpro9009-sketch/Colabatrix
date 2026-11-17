@@ -32,7 +32,7 @@ function bottleSVG(p,category){
 function renderProducts(category){
   const grid=$('#product-grid');
   grid.setAttribute('aria-labelledby',`tab-${category}`);
-  grid.innerHTML=catalogue[category].map((p,i)=>`<article class="product-card" style="--product-color:${p.color}"><div class="product-visual"><span class="product-tag">${p.tag}</span><span class="product-index">0${i+1}</span>${bottleSVG(p,category)}</div><div class="product-info"><div class="product-meta"><span>${p.type}</span><span>${p.volume}</span></div><h3>${p.name}</h3><p>${p.description}</p><button class="product-order" data-order="${p.type} · ${p.name} · ${p.volume}">Хочу попробовать <span><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg></span></button></div></article>`).join('');
+  grid.innerHTML=catalogue[category].map((p,i)=>`<article class="product-card" style="--product-color:${p.color}"><div class="product-visual"><span class="product-tag">${p.tag}</span><span class="product-index">0${i+1}</span>${bottleSVG(p,category)}</div><div class="product-info"><div class="product-meta"><span>${p.type}</span><span>${p.volume}</span></div><h3>${p.name}</h3><p>${p.description}</p><button class="product-order" data-order="${p.type} · ${p.name} · ${p.volume}">Хочу попробовать <span><svg class="icon" aria-hidden="true" focusable="false"><use href="icons.svg#arrow-up-right"></use></svg></span></button></div></article>`).join('');
   $$('.tab').forEach(tab=>{const active=tab.dataset.category===category;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;});
 }
 $$('.tab').forEach((tab,i)=>{
@@ -42,9 +42,9 @@ $$('.tab').forEach((tab,i)=>{
 renderProducts('coldbrew');
 
 const scenes=[
-  {word:'ОБЫЧНОГО.',description:'Холодный кофе. Ягодные акценты.<br>Твой маленький выход за рамки.',image:'assets/hero-bottles.png',background:'assets/mountains.jpg',alt:'Три вкуса COLABA Cold Brew: малина, гранат и смородина'},
-  {word:'ПРИВЫЧНОГО.',description:'Тропические сочетания. Кофейный характер.<br>Смени маршрут. Поймай свой ритм.',image:'assets/hero-tonics.png',background:'assets/forest.jpg',alt:'Фруктовые тоники COLABA TRIX: арбуз-маракуйя, ананас-черника, киви-манго'},
-  {word:'ОЖИДАЕМОГО.',description:'Имбирный шот. Виноградный акцент.<br>Большой характер в маленькой бутылке.',image:'assets/hero-shot.png',background:'assets/water.jpg',alt:'Имбирный шот COLABA TRIX со вкусом винограда'}
+  {word:'ОБЫЧНОГО.',description:'Холодный кофе. Ягодные акценты.<br>Твой маленький выход за рамки.',image:'hero-bottles.png',background:'mountains.jpg',alt:'Три вкуса COLABA Cold Brew: малина, гранат и смородина'},
+  {word:'ПРИВЫЧНОГО.',description:'Тропические сочетания. Кофейный характер.<br>Смени маршрут. Поймай свой ритм.',image:'hero-tonics.png',background:'forest.jpg',alt:'Фруктовые тоники COLABA TRIX: арбуз-маракуйя, ананас-черника, киви-манго'},
+  {word:'ОЖИДАЕМОГО.',description:'Имбирный шот. Виноградный акцент.<br>Большой характер в маленькой бутылке.',image:'hero-shot.png',background:'water.jpg',alt:'Имбирный шот COLABA TRIX со вкусом винограда'}
 ];
 let currentScene=0,sceneTimer;
 const imageCache=new Map();
